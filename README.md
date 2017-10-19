@@ -1,1 +1,1 @@
-https://appwheretoeat.github.io/app
+link: https://appwheretoeat.github.io/app
