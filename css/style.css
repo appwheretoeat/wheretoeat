@@ -124,8 +124,15 @@ header .menu{
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
 
-
-
+.grid-main-article {
+	grid-area: grid-main-article;
+}
+.grid--article4 {
+	grid-area: grid-article4;
+}
+.grid--article5 {
+	grid-area: grid-article5;
+}
 .main {
 
 	background:white;
@@ -274,21 +281,10 @@ footer .social a {
 
 
 @media screen and (min-width: 800px) {
-.contenedor{
-	display: grid;
-	grid-template-columns: 2fr 1fr;
-	grid-template-areas: "header header"
-			     "aside aside"
-		             "double-window double-window"
-			     "footer footer";
-}
-
 	header nav{
 		display:none;
 	}
-	header{
-		grid-area: header;
-	}
+
 	header .menu{
 	max-height: 50px;
 	font-size: 1.2rem;
@@ -326,6 +322,11 @@ footer .social a {
 		text-decoration: none;
 	}
 
+	.contenedor{
+		display: flex;
+		flex-flow: row wrap;
+	}
+
 	.titulo-star h5{
 		margin-top: 2%;
 	}
@@ -336,31 +337,25 @@ footer .social a {
 		border-width: 2px;
 	}
 
-
-
-	aside {
-		grid-area: aside;
-		grid-column: 2/3;
-		border-top-style: solid;
-		border-top-left-radius: 20px;
-		border-color: #38393a;
-		border-width: 2px;
-		width: 100%;
-	}
-
-	.double-window{
-		grid-area: double-window;
-		width: 150%;
-		display: flex;
-		flex-flow: row nowrap;
-	}
-
 	.win1{
 		padding: 10px;
 	}
 
+	.double-window{
+		display: flex;
+		flex-flow: row nowrap;
+	}
+
+	aside {
+		flex-direction: column;
+		flex: 1 1 30%;
+		border-top-style: solid;
+		border-top-left-radius: 20px;
+		border-color: #38393a;
+		border-width: 2px;
+	}
+
 	footer {
-		grid-area: footer;
 		justify-content:space-between;
 	}
 }
