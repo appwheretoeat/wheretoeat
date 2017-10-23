@@ -365,6 +365,7 @@ footer .social a {
 	grid-template-columns: 2fr 1fr;
 	grid-template-areas: "header header"
 												"aside aside"
+												"widget widget"
 												"double-window double-window"
 												"footer footer";
 }
@@ -427,11 +428,9 @@ footer .social a {
 	aside {
 		grid-area: aside;
 		grid-column: 2/3;
-		border-top-style: solid;
-		border-top-left-radius: 20px;
-		border-color: #38393a;
-		border-width: 2px;
-		width: 100%;
+		display: flex;
+		flex-direction: column;
+
 	}
 
 	.double-window{
