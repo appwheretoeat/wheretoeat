@@ -214,10 +214,6 @@ aside {
 	justify-content:flex-start;
 }
 aside .widget {
-	border-top-style: solid;
-	border-right-style: solid;
-	border-color: black;
-	border-width: 1px;
 	padding-bottom: 10%;
 	margin-bottom: 5%;
 	font-size: 1.5rem;
@@ -407,6 +403,13 @@ footer .social a {
 		color:#38393a;
 		padding: 10px;
 		text-decoration: none;
+	}
+	
+	aside .widget {
+	border-top-style: solid;
+	border-right-style: solid;
+	border-color: black;
+	border-width: 1px;
 	}
 
 	.titulo-star h5{
