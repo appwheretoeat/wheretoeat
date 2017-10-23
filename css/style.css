@@ -5,7 +5,6 @@
 	font-family: 'Muli', sans-serif;
 }
 
-
 img{
 	width: 100%;
 }
@@ -17,13 +16,19 @@ hr{
 
 .contenedor {
 	background-color: white;
-	width:90%;
+	width:100%;
 	max-width:1000px;
 	margin:auto;
-
-	/* Flexbox */
-	display:flex;
-	flex-flow:row wrap;
+	display: grid;
+	grid-template-areas: "header"
+			  "grid-main-article"
+				  		 "aside"
+				  "grid-article4"
+				  "grid-article5"
+				 		 "footer";
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(6, auto);
+	grid-gap: 1,5em;
 }
 
 body {
@@ -31,18 +36,15 @@ body {
 }
 
 header {
+	grid-area: header;
 	background:#fff;
-	border-top-style: solid;
-	border-left-style: solid;
-	border-right-style: solid;
+	border: solid;
 	border-width: 2px;
+	border-bottom: none;
 	border-color: #a85122;
-	border-top-left-radius: 20px;
-	border-top-right-radius: 20px;
+	border-radius: 20px 20px 0 0;
 	width:100%;
 	padding:10px;
-
-	/* Flexbox */
 	display: flex;
 	justify-content:space-between;
 	align-items:center;
@@ -59,9 +61,8 @@ header .logo {
 
 
 header nav {
-	width:30%;
+	max-width:30%;
 	font-size: 30px;
-	/* Flexbox */
 	display:flex;
 	flex-wrap:wrap;
 	flex-direction: row-reverse;
@@ -77,20 +78,64 @@ header nav a {
 	text-decoration: none;
 	padding:5px;
 	margin-right: 2px;
-
-	/* Flexbox */
 }
 
 header .menu{
 	display: none;
 }
 
+/* Dropdown Button */
+.dropbtn {
+	font-size: 1em;
+	background-color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+.grid-main-article {
+	grid-area: grid-main-article;
+}
+.grid--article4 {
+	grid-area: grid-article4;
+}
+.grid--article5 {
+	grid-area: grid-article5;
+}
 .main {
 
 	background:white;
 	padding:20px;
 	flex:1 1 70%;
-	/*flex:1;*/
 }
 
 .main article {
@@ -160,26 +205,27 @@ header .menu{
 }
 
 aside {
+	grid-area: aside;
 	background:#fff;
-	padding:20px;
 	font-size: 1.3em;
-	/*FLEX*/
 	flex:1 1 30%;
-	/*flex:0 0 300px;*/
 	display: flex;
-	flex-wrap:wrap;
-	flex-direction:column;
+	flex-direction: row;
 	justify-content:flex-start;
 }
 aside .widget {
-	border-right-style: solid;
 	border-top-style: solid;
+	border-right-style: solid;
 	border-color: black;
 	border-width: 1px;
 	padding-bottom: 10%;
 	margin-bottom: 5%;
 	font-size: 1.5rem;
 	flex-flow: row wrap;
+}
+.widget.widget{
+	margin-left: 1em;
+	margin-right: 1em;
 }
 
 .aside-icons{
@@ -194,11 +240,10 @@ aside .widget {
 }
 
 footer {
+	grid-area: footer;
 	background:#2c3e50;
 	width: 100%;
 	padding:20px;
-
-	/* Flexbox */
 	display: flex;
 	flex-wrap:wrap;
 	justify-content:space-around;
@@ -232,30 +277,8 @@ footer .social a {
 	display: inline-block;
 }
 
-/*@media screen and (min-width: 600px) {
-	.contenedor {
-		flex-direction:column;
-	}
-	header {
-		flex-direction:row;
-		padding:0;
-	}
-	header .logo {
-		margin:10px 0;
-	}
-	header nav {
-		width: 30%;
-	}
-	aside {
-		flex-direction:row;
-		flex:0;
-	}
-	aside .widget {
-		flex-grow:1;
-		margin-bottom: 50%;
-	}
-}*/
 
+/*con flex
 @media screen and (min-width: 800px) {
 	header nav{
 		display:none;
@@ -332,6 +355,96 @@ footer .social a {
 	}
 
 	footer {
+		justify-content:space-between;
+	}
+}*/
+@media screen and (min-width: 800px) {
+.contenedor{
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	grid-template-areas: "header header"
+												"aside aside"
+												"widget widget"
+												"double-window double-window"
+												"footer footer";
+}
+
+	header nav{
+		display:none;
+	}
+	header{
+		grid-area: header;
+	}
+	header .menu{
+	max-height: 50px;
+	font-size: 1.2rem;
+	width:60%;
+	display:flex;
+	flex-direction: row-reverse;
+	justify-content: space-around;
+	}
+
+	header .menu a.line{
+		border-bottom: solid;
+		border-top: solid;
+		border-width: 2px;
+		border-bottom-color: #a85122;
+		border-radius: 3px 10px 3px 10px;
+		color:#38393a;
+		padding: 7px;
+		text-decoration: none;
+	}
+
+	.userch{
+		font-size: 1.3em;
+		display: flex;
+		flex-direction: row-reverse;
+		justify-content: space-around;
+		width: 20%;
+	}
+
+	.userch a{
+		color:#38393a;
+		padding: 10px;
+		text-decoration: none;
+	}
+
+	.titulo-star h5{
+		margin-top: 2%;
+	}
+
+	.main{
+		border-left:2px solid #a85122;
+	}
+
+
+
+	aside {
+		padding-top: 7%;
+		border-top: solid;
+		border-top-left-radius: 20px;
+		border-color: #38393a;
+		border-width: 2px;
+		grid-area: aside;
+		grid-column: 2/3;
+		display: flex;
+		flex-direction: column;
+
+	}
+
+	 .double-window{
+		grid-area: double-window;
+		width: 150%;
+		display: flex;
+		flex-flow: row nowrap;
+	}
+
+	.win1{
+		padding: 10px;
+	}
+
+	footer {
+		grid-area: footer;
 		justify-content:space-between;
 	}
 }
