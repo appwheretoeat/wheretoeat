@@ -217,9 +217,8 @@ aside {
 	justify-content:flex-start;
 }
 aside .widget {
-	border-top-style: solid;
-	border-color: black;
-	border-width: 1px;
+	border-right: 1px solid black;
+	border-top:1px solid black;
 	padding-bottom: 10%;
 	margin-bottom: 5%;
 	font-size: 1.5rem;
