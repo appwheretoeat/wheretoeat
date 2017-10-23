@@ -1,4 +1,4 @@
-<!doctype html>
+<!doctype html transitional>
 <html lang="es">
 <head>
 	<meta charset="utf-8">
@@ -8,19 +8,29 @@
 	<link rel="stylesheet" type="text/css" href="icomoon/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
 	<script src="prefix.js"></script>
-    	<link rel="stylesheet" href="./css/style.css">
+	<script src="js/menu.js"></script>
+    	<link rel="stylesheet" href="css/style.css">
  </head>
  <body>
 	<div class="contenedor">
 
 		<header>
+			<nav>
+				<div class="dropdown">
+					<button onclick="myFunction()" class="dropbtn icon-menu"></button>
+						<div id="myDropdown" class="dropdown-content">
+							<a href="#" class="icon-user"></a>
+							<a href="#" class="icon-search"></a>
+							<a href="#" class="line">Regístrate</a>
+							<a href="#" class="line">Lo + visto</a>
+							<a href="#" class="line">Tu Zona</a>
+						</div>
+					</div>
+			</nav>
 			<div class="logo">
 				<img src="media/logo.png">
 			</div>
-			<nav>
-				<a href="#" class="icon-menu"></a>
-				<a href="#" class="icon-search"></a>
-			</nav>
+
 			<div class="menu">
 				<div class="userch">
 				<a href="#" class="icon-user"></a>
@@ -33,7 +43,7 @@
 			</div>
 		</header>
 		<section class="main">
-			<article>
+			<article class="grid-main-article">
   			<img src="./media/img1.jpg">
   			<div class="cabecera">
   			<div class="titulo-star">
@@ -100,7 +110,7 @@
 
 		<section class="main">
 			<div class="double-window">
-				<div class="win1">
+				<div class="win1 grid-article4">
 					<article>
 		  			<img src="./media/img4.jpg">
 		  			<div class="cabecera">
@@ -131,7 +141,7 @@
 							Centroamérica hasta los países del Cono Sur. </p>
 					</article>
 				</div>
-				<div class="win1">
+				<div class="win1 grid-article5">
 					<article>
 		  			<img src="./media/img5.jpg">
 		  			<div class="cabecera">
