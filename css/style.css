@@ -257,35 +257,6 @@ footer .social a {
 	display: inline-block;
 }
 
-/*@media screen and (min-width: 600px) {
-	.contenedor {
-		flex-direction:column;
-	}
-
-	header {
-		flex-direction:row;
-		padding:0;
-	}
-
-	header .logo {
-		margin:10px 0;
-	}
-
-	header nav {
-		width: 30%;
-	}
-
-	aside {
-		flex-direction:row;
-		flex:0;
-	}
-
-	aside .widget {
-		flex-grow:1;
-		margin-bottom: 50%;
-	}
-}*/
-
 @media screen and (min-width: 800px) {
 	header nav{
 		display:none;
