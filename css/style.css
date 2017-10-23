@@ -16,11 +16,19 @@ hr{
 
 .contenedor {
 	background-color: white;
-	max-width:100%;
+	width:100%;
 	max-width:1000px;
 	margin:auto;
-	display:flex;
-	flex-flow:row wrap;
+	display: grid;
+	grid-template-areas: "header"
+			  "grid-main-article"
+				  		 "aside"
+				  "grid-article4"
+				  "grid-article5"
+				 		 "footer";
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(6, auto);
+	grid-gap: 1,5em;
 }
 
 body {
@@ -28,10 +36,10 @@ body {
 }
 
 header {
+	grid-area: header;
 	background:#fff;
-	border-style: solid;
-	border-bottom-style: none;
-	border-width: 2px;
+	border: solid;
+	border-bottom: none;
 	border-color: #a85122;
 	border-radius: 20px 20px 0 0;
 	width:100%;
@@ -52,7 +60,7 @@ header .logo {
 
 
 header nav {
-	width:30%;
+	max-width:30%;
 	font-size: 30px;
 	display:flex;
 	flex-wrap:wrap;
@@ -113,8 +121,15 @@ header .menu{
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
 
-
-
+.grid-main-article {
+	grid-area: grid-main-article;
+}
+.grid--article4 {
+	grid-area: grid-article4;
+}
+.grid--article5 {
+	grid-area: grid-article5;
+}
 .main {
 
 	background:white;
@@ -189,17 +204,15 @@ header .menu{
 }
 
 aside {
+	grid-area: aside;
 	background:#fff;
-	padding:20px;
 	font-size: 1.3em;
 	flex:1 1 30%;
 	display: flex;
-	flex-wrap:wrap;
-	flex-direction:column;
+	flex-direction: row;
 	justify-content:flex-start;
 }
 aside .widget {
-	border-right-style: solid;
 	border-top-style: solid;
 	border-color: black;
 	border-width: 1px;
@@ -207,6 +220,10 @@ aside .widget {
 	margin-bottom: 5%;
 	font-size: 1.5rem;
 	flex-flow: row wrap;
+}
+.widget.widget{
+	margin-left: 1em;
+	margin-right: 1em;
 }
 
 .aside-icons{
@@ -221,6 +238,7 @@ aside .widget {
 }
 
 footer {
+	grid-area: footer;
 	background:#2c3e50;
 	width: 100%;
 	padding:20px;
@@ -258,22 +276,12 @@ footer .social a {
 }
 
 
+/*con flex
 @media screen and (min-width: 800px) {
-.contenedor{
-	display: grid;
-	grid-template-columns: 2fr 1fr;
-	grid-template-areas: "header header"
-												"aside aside"
-												"double-window double-window"
-												"footer footer";
-}
-
 	header nav{
 		display:none;
 	}
-	header{
-		grid-area: header;
-	}
+
 	header .menu{
 	max-height: 50px;
 	font-size: 1.2rem;
@@ -311,6 +319,11 @@ footer .social a {
 		text-decoration: none;
 	}
 
+	.contenedor{
+		display: flex;
+		flex-flow: row wrap;
+	}
+
 	.titulo-star h5{
 		margin-top: 2%;
 	}
@@ -321,19 +334,107 @@ footer .social a {
 		border-width: 2px;
 	}
 
+	.win1{
+		padding: 10px;
+	}
 
+	.double-window{
+		display: flex;
+		flex-flow: row nowrap;
+	}
 
 	aside {
-		grid-area: aside;
-		grid-column: 2/3;
+		flex-direction: column;
+		flex: 1 1 30%;
 		border-top-style: solid;
 		border-top-left-radius: 20px;
 		border-color: #38393a;
 		border-width: 2px;
-		width: 100%;
 	}
 
-	.double-window{
+	footer {
+		justify-content:space-between;
+	}
+}*/
+@media screen and (min-width: 800px) {
+.contenedor{
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	grid-template-areas: "header header"
+												"aside aside"
+												"widget widget"
+												"double-window double-window"
+												"footer footer";
+}
+
+	header nav{
+		display:none;
+	}
+	header{
+		grid-area: header;
+	}
+	header .menu{
+	max-height: 50px;
+	font-size: 1.2rem;
+	width:60%;
+	display:flex;
+	flex-direction: row-reverse;
+	justify-content: space-around;
+	}
+
+	header .menu a.line{
+		border-bottom: solid;
+		border-top: solid;
+		border-width: 2px;
+		border-bottom-color: #a85122;
+		border-radius: 3px 10px 3px 10px;
+		color:#38393a;
+		padding: 7px;
+		text-decoration: none;
+	}
+
+	.userch{
+		font-size: 1.3em;
+		display: flex;
+		flex-direction: row-reverse;
+		justify-content: space-around;
+		width: 20%;
+	}
+
+	.userch a{
+		color:#38393a;
+		padding: 10px;
+		text-decoration: none;
+	}
+
+	.titulo-star h5{
+		margin-top: 2%;
+	}
+
+	.main{
+		border-top-style: solid;
+		border-top-right-radius: 20px;
+		border-color: #a85122;
+	}
+
+
+
+	aside {
+		padding-top: 7%;
+		border-top: solid;
+		border-top-left-radius: 20px;
+		border-bottom: solid;
+		border-bottom-left-radius: 20px;
+		border-color: #38393a;
+		border-width: 2px;
+		grid-area: aside;
+		grid-column: 2/3;
+		display: flex;
+		flex-direction: column;
+
+	}
+
+	 .double-window{
 		grid-area: double-window;
 		width: 150%;
 		display: flex;
@@ -349,3 +450,4 @@ footer .social a {
 		justify-content:space-between;
 	}
 }
+
